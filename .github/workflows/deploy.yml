@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - task-3-cicd
 
 jobs:
   deploy:
