@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scalable-web-app
+  labels:
+    app: scalable-web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: scalable-web-app
+  template:
+    metadata:
+      labels:
+        app: scalable-web-app
+    spec:
+      containers:
+      - name: web-app
+        image: scalable-web-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+        env:
+        - name: STUDENT_NAME
+          value: "GOKUL P R"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Scalable Web App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .student-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .info-value {
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .features {
+            margin: 30px 0;
+        }
+
+        .features h2 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .feature-item {
+            background: #f0f3ff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-icon {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .feature-text {
+            color: #333;
+        }
+
+        .deployment-info {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #4caf50;
+        }
+
+        .deployment-info p {
+            color: #2e7d32;
+            font-size: 0.95em;
+            margin: 5px 0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #4caf50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #999;
+            font-size: 0.9em;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Scalable Web App</h1>
+            <p>My First Kubernetes Deployment</p>
+        </div>
+
+        <div class="student-info">
+            <div class="info-row">
+                <span class="info-label">Student Name:</span>
+                <span class="info-value" id="student-name">Loading...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Deployment:</span>
+                <span class="info-value">Kubernetes on KIND</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Container Runtime:</span>
+                <span class="info-value">Docker + nginx:alpine</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Replicas:</span>
+                <span class="info-value">3</span>
+            </div>
+        </div>
+
+        <div class="features">
+            <h2>✨ Project Features</h2>
+            <div class="feature-item">
+                <div class="feature-icon">📦</div>
+                <div class="feature-text">Containerized with Docker</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">☸️</div>
+                <div class="feature-text">Orchestrated with Kubernetes</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔄</div>
+                <div class="feature-text">Auto-scaling capable</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🛡️</div>
+                <div class="feature-text">Self-healing deployment</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-text">Production-ready stack</div>
+            </div>
+        </div>
+
+        <div class="deployment-info">
+            <p><strong>📊 Deployment Status:</strong></p>
+            <p>✅ Docker image built successfully</p>
+            <p>✅ Kubernetes cluster running</p>
+            <p>✅ 3 replicas deployed</p>
+            <p>✅ Self-healing enabled</p>
+            <span class="status-badge">HEALTHY</span>
+        </div>
+
+        <footer>
+            <p>🎓 Shipyard Foundations - Final Project | evn-dop-shipyard26-ship</p>
+            <p>Built with Docker & Kubernetes</p>
+        </footer>
+    </div>
+
+    <script>
+        // Read STUDENT_NAME from environment and display it
+        const studentName = process.env.STUDENT_NAME || 'Student';
+        document.getElementById('student-name').textContent = studentName;
+    </script>
+</body>
+</html>
